@@ -55,14 +55,13 @@ jobs:
         run: uv run ruff check .
 
       - name: Compile Python files
-        run: python -m compileall src tests example
+        run: uv run python -m compileall src tests example
 
       - name: Smoke-test runnable maths examples
         run: |
-          python example/maths/example_numerical_integration.py
-          python example/maths/example_ode_solver.py
-          python example/maths/example_matrix_multiplication.py
-
+          uv run python example/maths/example_numerical_integration.py
+          uv run python example/maths/example_ode_solver.py
+          uv run python example/maths/example_matrix_multiplication.py
       - name: Run tests
         run: uv run pytest -v
 
